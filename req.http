@@ -1,0 +1,11 @@
+###
+PATCH http://localhost:4004/odata/v4/tax/Categories(categoryCode='CAT3') HTTP/1.1
+Accept:application/json;odata.metadata=minimal;IEEE754Compatible=true
+Accept-Language:en-GB
+Content-Type:application/json;charset=UTF-8;IEEE754Compatible=true
+
+{"categoryCode":"CAT3","categoryText":"1Direct Tax"}
+
+###
+GET http://localhost:4004/odata/v4/tax/Categories HTTP/1.1
+Content-Type:application/json;charset=UTF-8;IEEE754Compatible=true

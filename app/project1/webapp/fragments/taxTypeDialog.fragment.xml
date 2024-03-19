@@ -1,0 +1,61 @@
+<core:FragmentDefinition
+    xmlns:f="sap.ui.layout.form"
+    xmlns="sap.m"
+    xmlns:core="sap.ui.core"
+>
+    <Dialog id="idTaxTypeDialog" title="{= ${selectionControl>/isEditable} ? 'Edit Data' : 'Add Data'}">
+        <content>
+            <f:Form
+                id="FormChange354"
+                editable="true"
+            >                
+                <f:layout>
+                    <f:ResponsiveGridLayout
+                        labelSpanXL="3"
+                        labelSpanL="3"
+                        labelSpanM="3"
+                        labelSpanS="12"
+                        adjustLabelSpan="false"
+                        emptySpanXL="4"
+                        emptySpanL="4"
+                        emptySpanM="4"
+                        emptySpanS="0"
+                        columnsXL="1"
+                        columnsL="1"
+                        columnsM="1"
+                        singleContainerFullSize="false"
+                    />
+                </f:layout>
+                <f:formContainers>
+                    <f:FormContainer>
+                        <f:formElements>
+                            <f:FormElement label="Object">
+                                <f:fields>
+                                    <Input
+                                        value="{typeCode}"
+                                        enabled="{= ${selectionControl>/isEditable} ? false : true }"
+                                    />
+                                </f:fields>
+                            </f:FormElement>
+                            <f:FormElement label="Description">
+                                <f:fields>
+                                    <Input value="{typeText}" />                                    
+                                </f:fields>
+                            </f:FormElement>                            
+                        </f:formElements>
+                    </f:FormContainer>
+                </f:formContainers>
+            </f:Form>
+        </content>
+        <buttons>            
+            <Button
+                text="Save"
+                press="onSaveButtonPress"
+            />
+            <Button
+                text="Cancel"
+                press="onCancelDialogPress"
+            />
+        </buttons>
+    </Dialog>
+</core:FragmentDefinition>

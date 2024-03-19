@@ -1,0 +1,273 @@
+<mvc:View
+    controllerName="project1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:smartTable="sap.ui.comp.smarttable"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    <Page id="idPage">
+        <content>
+            <IconTabBar
+                id="idIconTabBar3"
+                class="sapUiResponsiveContentPadding"
+                select="onIconTabBarSelect"
+            >
+                <items>
+                    <IconTabFilter
+                        key="category"                        
+                        text="{i18n>titleTaxCategory}"
+                    >
+                        <content>
+                            <Panel>
+                                <content>
+                                    <Table
+                                        id="idTaxCategoryTable"
+                                        growing="true"
+                                        mode="SingleSelectLeft"
+                                        growingThreshold="10"
+                                        selectionChange="onTableSelectionChange"
+                                        items="{
+                                            path: '/Categories',
+                                            sorter: {
+                                                path: 'categoryCode',
+                                                descending: false
+                                            },
+                                            parameters: {
+                                                            $count: true,
+                                                            $$updateGroupId : 'categoryGroup'
+                                                        }
+                                        }"
+                                    >
+                                        <headerToolbar>
+                                            <OverflowToolbar>
+                                                <Title
+                                                    text="{i18n>titleTaxCategory}"
+                                                    level="H2"
+                                                />
+                                                <ToolbarSpacer />
+                                                <Button
+                                                    id="idEditCategoryButton"
+                                                    tooltip="Edit"
+                                                    type="Transparent"
+                                                    press="onCategoryOperation"
+                                                    enabled="{= ${selectionControl>/isSelected} }"
+                                                    icon="sap-icon://edit"
+                                                />
+                                                <Button
+                                                    id="idAddCategoryButton"
+                                                    tooltip="Add"
+                                                    type="Transparent"
+                                                    press="onCategoryOperation"                                                    
+                                                    icon="sap-icon://add"
+                                                />
+                                                <Button
+                                                    id="idDeleteCategoryButton"
+                                                    tooltip="Add"
+                                                    type="Transparent"
+                                                    press="onCategoryDeletion"                                                    
+                                                    icon="sap-icon://delete"
+                                                />
+                                            </OverflowToolbar>
+                                        </headerToolbar>
+                                        <columns>
+                                            <Column width="12em">
+                                                <Text text="Object" />
+                                            </Column>
+                                            <Column
+                                                minScreenWidth="Tablet"
+                                                demandPopin="true"
+                                                hAlign="End"
+                                            >
+                                                <Text text="Description" />
+                                            </Column>
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem vAlign="Middle">
+                                                <cells>
+                                                    <ObjectIdentifier text="{categoryCode}" />
+                                                    <ObjectIdentifier text="{categoryText}" />
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                                </content>
+                                <headerToolbar>
+                                </headerToolbar>
+                                <infoToolbar>
+                                </infoToolbar>
+                            </Panel>
+                        </content>
+                    </IconTabFilter>
+                    <IconTabFilter
+                        key="type"
+                        text="{i18n>titleTaxType}"
+                    >
+                        <content>
+                            <Panel>
+                                <content>
+                                    <Table
+                                        id="idTaxTypeTable"
+                                        growing="true"
+                                        growingThreshold="10"
+                                        mode="SingleSelectLeft"
+                                        selectionChange="onTableSelectionChange"
+                                        items="{
+                                            path: '/Types',
+                                            sorter: {
+                                                path: 'typeCode',
+                                                descending: false
+                                            }
+                                        }"
+                                    >
+                                        <headerToolbar>
+                                            <OverflowToolbar>
+                                                <Title
+                                                    text="{i18n>titleTaxType}"
+                                                    level="H2"
+                                                />
+                                                <ToolbarSpacer />
+                                                <Button
+                                                    id="idEditButton"
+                                                    tooltip="Edit"
+                                                    type="Transparent"
+                                                    press="onTypeOperation"
+                                                    enabled="{= ${selectionControl>/isSelected} }"
+                                                    icon="sap-icon://edit"
+                                                />
+                                                <Button
+                                                    id="idAddButton"
+                                                    tooltip="Add"
+                                                    type="Transparent"
+                                                    press="onTypeOperation"
+                                                    icon="sap-icon://add"
+                                                />
+                                            </OverflowToolbar>
+                                        </headerToolbar>
+                                        <columns>
+                                            <Column width="12em">
+                                                <Text text="Object" />
+                                            </Column>
+                                            <Column
+                                                minScreenWidth="Tablet"
+                                                demandPopin="true"
+                                                hAlign="End"
+                                            >
+                                                <Text text="Description" />
+                                            </Column>
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem vAlign="Middle">
+                                                <cells>
+                                                    <ObjectIdentifier text="{typeCode}" />
+                                                    <ObjectIdentifier text="{typeText}" />
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                                </content>
+                                <headerToolbar>
+                                </headerToolbar>
+                                <infoToolbar>
+                                </infoToolbar>
+                            </Panel>
+                        </content>
+                    </IconTabFilter>
+                    <IconTabFilter
+                        key="mapping"
+                        text="{i18n>titleMapping}"
+                    >
+                        <content>
+                            <Panel>
+                                <content>
+                                    <Table
+                                        id="idMappingTable"
+                                        growing="true"
+                                        growingThreshold="10"
+                                        mode="SingleSelectLeft"
+                                        selectionChange="onTableSelectionChange"
+                                        items="{
+                                            path: '/Mappings',
+                                            sorter: {
+                                                path: 'companyCode',
+                                                descending: false
+                                            }
+                                        }"
+                                    >
+                                        <headerToolbar>
+                                            <OverflowToolbar>
+                                                <Title
+                                                    text="{i18n>titleMapping}"
+                                                    level="H2"
+                                                />
+                                                <ToolbarSpacer />
+                                                <Button
+                                                    id="idEditMapButton"
+                                                    tooltip="Edit"
+                                                    type="Transparent"
+                                                    press="onMappingEdit"
+                                                    enabled="{= ${selectionControl>/isSelected} }"
+                                                    icon="sap-icon://edit"
+                                                />
+                                                <Button
+                                                    id="idAddMapButton"
+                                                    tooltip="Add"
+                                                    type="Transparent"
+                                                    press="onMappingAdd"
+                                                    icon="sap-icon://add"
+                                                />
+                                            </OverflowToolbar>
+                                        </headerToolbar>
+                                        <columns>
+                                            <Column width="12em">
+                                                <Text text="Company Code" />
+                                            </Column>
+                                            <Column
+                                                minScreenWidth="Tablet"
+                                                demandPopin="true"
+                                                hAlign="End"
+                                            >
+                                                <Text text="Fiscal Year" />
+                                            </Column>
+                                            <Column
+                                                minScreenWidth="Tablet"
+                                                demandPopin="true"
+                                                hAlign="Center"
+                                            >
+                                                <Text text="Tax Type Category" />
+                                            </Column>
+                                            <Column
+                                                minScreenWidth="Tablet"
+                                                demandPopin="true"
+                                                hAlign="Center"
+                                            >
+                                                <Text text="Tax Type" />
+                                            </Column>
+                                            <Column hAlign="End">
+                                                <Text text="Materiality" />
+                                            </Column>
+                                        </columns>
+                                        <items>
+                                            <ColumnListItem vAlign="Middle">
+                                                <cells>
+                                                    <ObjectIdentifier text="{companyCode}" />
+                                                    <ObjectIdentifier text="{fiscalYear}" />
+                                                    <ObjectIdentifier text="{categoryCode_categoryText}" />
+                                                    <ObjectIdentifier text="{typeCode_typeText}" />
+                                                    <ObjectIdentifier text="{materiality}" />
+                                                </cells>
+                                            </ColumnListItem>
+                                        </items>
+                                    </Table>
+                                </content>
+                                <headerToolbar>
+                                </headerToolbar>
+                                <infoToolbar>
+                                </infoToolbar>
+                            </Panel>
+                        </content>
+                    </IconTabFilter>
+                </items>
+            </IconTabBar>
+        </content>
+    </Page>
+</mvc:View>
