@@ -42,7 +42,7 @@ sap.ui.define([
             this._loadFragment(this, oView, 'idTaxCategoryDialog', "project1.fragments.taxCategoryDialog")
         },
 
-        onCategoryDeletion: function () {
+        onCategoryDeletion: fgitunction () {
             var oBindingContext = this.getView().getModel('selectionModel').getProperty('/selectedContext')
 
             oBindingContext.delete()
